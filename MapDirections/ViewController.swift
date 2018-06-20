@@ -12,7 +12,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         map.delegate = self
         map.showsUserLocation = true
-        map.showsScale = true
         map.showsPointsOfInterest = true
         
         locationManager.requestAlwaysAuthorization()
@@ -54,6 +53,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             let rect = route.polyline.boundingMapRect
             self.map.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+            self.map.setVisibleMapRect(rect, edgePadding: UIEdgeInsetsMake(50.0, 50.0, 50.0, 50.0), animated: true)
         
         })
     }
