@@ -11,8 +11,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         
         map.delegate = self
-        map.showsUserLocation = true
-        map.showsPointsOfInterest = true
         
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
