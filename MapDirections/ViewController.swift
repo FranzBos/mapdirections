@@ -24,12 +24,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
         let sourceCoordinates = locationManager.location?.coordinate
-        let destinationCoordinates = CLLocationCoordinate2DMake(45.822497,8.7496685)
+        let destinationCoordinates = CLLocationCoordinate2DMake(45.817456,8.8255659)
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceCoordinates!)
         let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinates)
         
         let sourceItem = MKMapItem(placemark: sourcePlacemark)
+        
         let destinationItem = MKMapItem(placemark: destinationPlacemark)
         
         let directionRequest = MKDirectionsRequest()
@@ -52,6 +53,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.map.add(route.polyline, level: .aboveRoads)
             
             let rect = route.polyline.boundingMapRect
+            
+            self.map.addAnnotation(Annotation(coordinate: destinationCoordinates, title: "Varese", subtitle: "Piazza Monte Grappa"))
             self.map.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
             self.map.setVisibleMapRect(rect, edgePadding: UIEdgeInsetsMake(50.0, 50.0, 50.0, 50.0), animated: true)
         
